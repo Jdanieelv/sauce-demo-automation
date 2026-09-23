@@ -1,7 +1,7 @@
-const { setWorldConstructor } = require("@cucumber/cucumber");
+const { setWorldConstructor, World } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
 
-class CustomWorld {
+class CustomWorld extends World {
   async openBrowser() {
     this.browser = await chromium.launch({ headless: false });
     this.context = await this.browser.newContext();
